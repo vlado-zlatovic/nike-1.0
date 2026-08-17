@@ -25,7 +25,7 @@ mobileList.forEach(link => {
 // Postavljanje IntersectionObserver-a
 const observerOptions = {
   root: null, // koristi viewport ekrana
-  threshold: 0.15 // sekcija se aktivira kada je 15% vidljiva na ekranu
+  threshold: 0.05 // sekcija se aktivira kada je 15% vidljiva na ekranu
 };
 
 const sectionObserver = new IntersectionObserver((entries, observer) => {
