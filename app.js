@@ -22,6 +22,91 @@ mobileList.forEach(link => {
 
 
 
+
+
+
+
+
+// LOCATIONS
+
+
+const locations = [
+  {
+    id: 1,
+    cityStateZip: "Corpus Christi, Texas(TX), 78418",
+    address: "15202 Reales Dr",
+    phone: "(636) 379-1958",
+    imgSrc: "Assets/Locations/location-1.jpeg",
+    imgAlt: "nike store location 1",
+    link: "#"
+  },
+  {
+    id: 2,
+    cityStateZip: "Alief, Texas(TX), 77411",
+    address: "Po Box 2382",
+    phone: "(661) 833-2272",
+    imgSrc: "Assets/Locations/location-2.jpg",
+    imgAlt: "nike store location 2",
+    link: "#"
+  },
+  {
+    id: 3,
+    cityStateZip: "Granbury, Texas(TX), 76049",
+    address: "3904 Monterrey Dr",
+    phone: "(682) 205-1078",
+    imgSrc: "Assets/Locations/location-3.jpg",
+    imgAlt: "nike store location 3",
+    link: "#"
+  }
+];
+
+function renderLocations(data) {
+  const container = document.querySelector('.locations-container');
+  
+  const htmlMarkup = data.map((location, index) => {
+    // Check if item is even to swap image and text order (matches location 2 layout)
+    const isEven = index % 2 !== 0;
+
+    const imgHTML = `
+      <div class="location-img-container">
+        <a href="${location.link}"><img src="${location.imgSrc}" alt="${location.imgAlt}"></a>
+      </div>
+    `;
+
+    const infoHTML = `
+      <div class="location-info">
+        <div class="location-pin">
+          <img src="Assets/Icons/location-dot-solid-full.svg" alt="location pin">
+          <p>Location ${location.id}:</p>
+        </div>
+        <h3>${location.cityStateZip}</h3>
+        <p>${location.address}</p>
+        <p>Number: ${location.phone}</p>
+      </div>
+    `;
+
+    return `
+      <div class="single-location fade-in-section">
+        ${isEven ? infoHTML + imgHTML : imgHTML + infoHTML}
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = htmlMarkup;
+}
+
+// Call function to populate the container
+renderLocations(locations);
+
+
+
+
+
+
+
+
+
+
 // Postavljanje IntersectionObserver-a
 const observerOptions = {
   root: null, // koristi viewport ekrana
@@ -121,3 +206,7 @@ function renderProducts(productList, targetContainer) {
 
 renderProducts(mensProduct, mensContainer);
 renderProducts(womensProducts, womensContainer);
+
+
+
+
